@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import PromotionBanner from '@/components/PromotionBanner';
+import PromotionGrid from '@/components/PromotionGrid';
 import ProductGrid from '@/components/ProductGrid';
 import ProductDetail from '@/components/ProductDetail';
 import Footer from '@/components/Footer';
@@ -12,7 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <PromotionBanner />
       <Hero />
+      <PromotionGrid />
       <ProductGrid onProductSelect={setSelectedProduct} />
       <Footer />
       

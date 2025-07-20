@@ -4,6 +4,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  images?: string[]; // múltiplas imagens para hover
   category: string;
   description: string;
   sizes: string[];

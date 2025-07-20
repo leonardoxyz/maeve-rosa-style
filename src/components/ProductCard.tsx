@@ -25,9 +25,9 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gradient-card">
         <img
-          src={product.image}
+          src={isHovered && product.images?.length ? product.images[1] || product.image : product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
         />
         
         {/* Badges */}

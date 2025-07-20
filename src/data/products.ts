@@ -1,7 +1,10 @@
 import { Product } from '@/types/product';
 import product1 from '@/assets/product-1.jpg';
+import product1Back from '@/assets/product-1-back.jpg';
 import product2 from '@/assets/product-2.jpg';
+import product2Side from '@/assets/product-2-side.jpg';
 import product3 from '@/assets/product-3.jpg';
+import product3Detail from '@/assets/product-3-detail.jpg';
 import product4 from '@/assets/product-4.jpg';
 import product5 from '@/assets/product-5.jpg';
 import product6 from '@/assets/product-6.jpg';
@@ -13,6 +16,7 @@ export const products: Product[] = [
     price: 129.90,
     originalPrice: 159.90,
     image: product1,
+    images: [product1, product1Back],
     category: 'Blusas',
     description: 'Uma blusa feminina e delicada em tom rosé, perfeita para looks românticos e casuais. Tecido leve e confortável.',
     sizes: ['PP', 'P', 'M', 'G', 'GG'],
@@ -25,6 +29,7 @@ export const products: Product[] = [
     name: 'Vestido Elegante Bordô',
     price: 299.90,
     image: product2,
+    images: [product2, product2Side],
     category: 'Vestidos',
     description: 'Vestido elegante na cor bordô, ideal para ocasiões especiais. Corte moderno que valoriza a silhueta feminina.',
     sizes: ['PP', 'P', 'M', 'G'],
@@ -37,6 +42,7 @@ export const products: Product[] = [
     price: 189.90,
     originalPrice: 229.90,
     image: product3,
+    images: [product3, product3Detail],
     category: 'Calças',
     description: 'Calça jeans branca com corte moderno. Versátil e confortável para o dia a dia.',
     sizes: ['36', '38', '40', '42', '44'],
