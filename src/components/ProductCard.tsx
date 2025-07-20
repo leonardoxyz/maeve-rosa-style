@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, ShoppingBag, Eye } from 'lucide-react';
 import { Product } from '@/types/product';
 import { Button } from '@/components/ui/button';
@@ -17,13 +18,14 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
     price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
   return (
-    <div 
-      className="group relative bg-card rounded-xl overflow-hidden shadow-product hover:shadow-hover transition-all duration-300 hover:-translate-y-2"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden bg-gradient-card">
+    <Link to={`/produto/${product.id}`}>
+      <div 
+        className="group relative bg-card rounded-xl overflow-hidden shadow-product hover:shadow-hover transition-all duration-300 hover:-translate-y-2"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Image Container */}
+        <div className="relative aspect-square overflow-hidden bg-gradient-card">
         <img
           src={isHovered && product.images?.length ? product.images[1] || product.image : product.image}
           alt={product.name}
@@ -61,7 +63,11 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
             size="icon"
             variant="secondary"
             className="rounded-full shadow-lg hover:scale-110 transition-transform"
-            onClick={() => setIsFavorited(!isFavorited)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsFavorited(!isFavorited);
+            }}
           >
             <Heart className={`h-4 w-4 ${isFavorited ? 'fill-destructive text-destructive' : ''}`} />
           </Button>
@@ -70,7 +76,11 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
             size="icon"
             variant="secondary"
             className="rounded-full shadow-lg hover:scale-110 transition-transform"
-            onClick={() => onQuickView?.(product)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onQuickView?.(product);
+            }}
           >
             <Eye className="h-4 w-4" />
           </Button>
@@ -78,6 +88,10 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
           <Button
             size="icon"
             className="rounded-full shadow-lg hover:scale-110 transition-transform"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
           >
             <ShoppingBag className="h-4 w-4" />
           </Button>
@@ -142,9 +156,10 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
           {product.sizes.length > 4 && (
             <span className="text-xs text-muted-foreground">...</span>
           )}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
